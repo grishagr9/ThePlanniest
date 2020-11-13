@@ -13,4 +13,10 @@ public class MainActivity2 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_plan);
     }
+
+    public void On_click_text(View view, char[] def)
+    {
+        // TODO: 13.11.2020
+        //если текст равен дефолтному - удалить
+    }
 }
