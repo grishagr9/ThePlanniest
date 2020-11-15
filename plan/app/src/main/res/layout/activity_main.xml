@@ -26,11 +26,11 @@
         android:layout_width="271dp"
         android:layout_height="66dp"
         android:layout_marginTop="24dp"
-        android:text="Введите план"
+        android:hint="Введите план"
+        android:inputType="text"
         app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
