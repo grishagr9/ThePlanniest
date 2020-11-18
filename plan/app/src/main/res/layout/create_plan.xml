@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Название"
-        android:onClick="On_click_text"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,17 +27,18 @@
         android:layout_height="325dp"
         android:layout_marginStart="58dp"
         android:layout_marginLeft="58dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="58dp"
         android:layout_marginRight="58dp"
         android:hint="Описание плана"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NamePlan"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Create_plan_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="169dp"
@@ -46,8 +46,25 @@
         android:text="Создать"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/image_back"
+        android:layout_width="64dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:background="#EC1010"
+        android:onClick="Click_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator"
+        tools:srcCompat="@mipmap/back_foreground" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
