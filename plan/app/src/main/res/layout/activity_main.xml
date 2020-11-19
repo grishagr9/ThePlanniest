@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-
+//желательно добавить рисунок лупы слева
     <EditText
         android:id="@+id/InputText"
         android:layout_width="271dp"
@@ -130,6 +130,7 @@
                 android:layout_height="75dp"
                 android:text="new plan10"
                 android:textSize="18sp" />
+            //почему-то не отображается последний план
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,7 @@
         tools:ignore="MissingConstraints"
 
         tools:layout_editor_absoluteY="35dp" />
-
+//сделать норм поле-описание плана
     <EditText
         android:id="@+id/textView2"
         android:layout_width="286dp"
@@ -52,6 +52,7 @@
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
+//не отображается стрелочка(
     <ImageView
         android:id="@+id/image_back"
         android:layout_width="64dp"
