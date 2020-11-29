@@ -39,98 +39,21 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonAdd"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="5dp">
 
         <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/LinearLayout228"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/NewButton1"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan1"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton2"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan2"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton3"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan3"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton4"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan4"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton5"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan5"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton6"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan6"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton7"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan7"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton8"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan8"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton9"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan9"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton10"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan10"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton11"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan10"
-                android:textSize="18sp" />
-            <Button
-                android:id="@+id/NewButton12"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan10"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/NewButton13"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:text="new plan10"
-                android:textSize="18sp" />
-            //почему-то не отображается последний план
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

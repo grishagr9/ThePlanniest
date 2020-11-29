@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -18,10 +20,15 @@ import android.content.DialogInterface;
 public class MainActivity2 extends Activity {
     private Context MainActivityClass;
 
+    private Button button;
+    private LinearLayout linearLayout;
+    private int countID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_plan);
+
     }
     public void Click_back(View view)
     {
@@ -29,12 +36,32 @@ public class MainActivity2 extends Activity {
         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
         startActivity(intent);
     }
-
-    public void Click_crate(View view)
+    public void Click_Create(View view)
     {
-        // TODO: 19.11.2020
-        //после нажатия кнопки создается кнопка этого плана на главном экране с надписью названия плана
+        button = (Button) findViewById(R.id.Create_plan_click);
+        linearLayout = (LinearLayout) findViewById(R.id.LinearLayout228);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Button b = new Button(getApplicationContext());
+                b.setText("button");
+                /*b.setLayoutParams(
+                        new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT)
+                );*/
+                b.setId(2000+countID);
+                linearLayout.addView(b);
+                countID++;
+                System.out.println(11111111);
+            }
+        });
+        //onClick(button);
+        Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+        startActivity(intent);
+       // System.out.println(11111111);
+        // TODO: 27.11.2020
     }
+
     /*public Dialog onCreateDialog(Bundle savedInstanceState) {
         String title = "Предупреждение";
         String message = "Если вы покинете страницу, введенные данные не сохранятся";
