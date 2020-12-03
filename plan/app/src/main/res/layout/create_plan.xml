@@ -6,6 +6,23 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="180dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Дедлайн:"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_plan"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
     <EditText
         android:id="@+id/NamePlan"
         android:layout_width="180dp"
@@ -47,7 +64,7 @@
         android:layout_marginTop="169dp"
         android:layout_marginBottom="43dp"
         android:text="Создать"
-
+        android:onClick="Click_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -55,7 +72,8 @@
         app:layout_constraintTop_toBottomOf="@+id/about_plan"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
-
+    
+//сделать картинку - стрелочка назад
     <TextView
         android:id="@+id/Click_back"
         android:layout_width="wrap_content"
@@ -69,6 +87,38 @@
         android:onClick="Click_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="180dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="Важность плана:"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/ratingBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_plan"
+        tools:ignore="MissingConstraints" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:numStars="5"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_plan"
+        app:layout_constraintVertical_bias="0.248" />
+
+    
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

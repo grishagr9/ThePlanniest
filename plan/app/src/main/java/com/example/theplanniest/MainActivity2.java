@@ -16,6 +16,11 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity2 extends Activity {
     private Context MainActivityClass;
@@ -29,13 +34,16 @@ public class MainActivity2 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_plan);
 
+
     }
+    //функция для выхода на главный экран
     public void Click_back(View view)
     {
         //onCreateDialog(); вывод предупреждения о несохранённых данных
         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
         startActivity(intent);
     }
+    //функция, которая будет создавать кнопку плана на главном экране
     public void Click_Create(View view)
     {
         button = (Button) findViewById(R.id.Create_plan_click);
@@ -62,6 +70,7 @@ public class MainActivity2 extends Activity {
         // TODO: 27.11.2020
     }
 
+     //функция для всплывающего окна в случае выхода из создателя плана, не сохранив изменения
     /*public Dialog onCreateDialog(Bundle savedInstanceState) {
         String title = "Предупреждение";
         String message = "Если вы покинете страницу, введенные данные не сохранятся";
