@@ -6,13 +6,17 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -22,20 +26,57 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class MainActivity2 extends Activity {
     private Context MainActivityClass;
 
     private Button button;
     private LinearLayout linearLayout;
     private int countID;
+    Calendar dateAndTime=Calendar.getInstance();
+    TextView DateTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_plan);
 
+        DateTime=(TextView)findViewById(R.id.DateText);
+        //setInitialDateTime();
+
+
 
     }
+    //ВЫБОР ДАТЫ
+        public void DateClick(View v)
+        {
+            new DatePickerDialog(MainActivity2.this, d,
+                    dateAndTime.get(Calendar.YEAR),
+                    dateAndTime.get(Calendar.MONTH),
+                    dateAndTime.get(Calendar.DAY_OF_MONTH))
+                    .show();
+            setInitialDateTime();
+            DateTime.setTextSize(20);
+        }
+
+        // установка обработчика выбора даты
+        DatePickerDialog.OnDateSetListener d=new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                dateAndTime.set(Calendar.YEAR, year);
+                dateAndTime.set(Calendar.MONTH, monthOfYear);
+                dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                setInitialDateTime();
+            }
+        };
+        // установка начальных даты и времени
+        private void setInitialDateTime() {
+
+            DateTime.setText(DateUtils.formatDateTime(this,
+                    dateAndTime.getTimeInMillis(),
+                    DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR));
+        }
+
     //функция для выхода на главный экран
     public void Click_back(View view)
     {
