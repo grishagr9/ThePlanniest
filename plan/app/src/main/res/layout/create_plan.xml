@@ -7,7 +7,7 @@
 
 
 
-
+//Название плана
     <EditText
         android:id="@+id/NamePlan"
         android:layout_width="180dp"
@@ -24,7 +24,7 @@
         tools:ignore="MissingConstraints"
 
         tools:layout_editor_absoluteY="35dp" />
-
+//Описание плана
     <EditText
         android:id="@+id/about_plan"
         android:layout_width="356dp"
@@ -43,7 +43,7 @@
         tools:ignore="MissingConstraints" />
 
     //сделать картинку - стрелочка назад
-
+//Кнопка создания плана
     <Button
         android:id="@+id/Create_plan_click"
         android:layout_width="wrap_content"
@@ -58,8 +58,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about_plan"
         app:layout_constraintVertical_bias="0.677"
-        tools:ignore="MissingConstraints" />
-
+        tools:ignore="MissingConstraints"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_save"
+        />
+//кнопка назад
     <TextView
         android:id="@+id/Click_back"
         android:layout_width="wrap_content"
@@ -92,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/about_plan"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
-
+//Важность плана
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="139dp"
@@ -123,7 +126,7 @@
         app:layout_constraintTop_toBottomOf="@+id/about_plan"
         app:layout_constraintVertical_bias="0.227"
         tools:ignore="MissingConstraints" />
-
+//ДедЛайн
     <TextView
         android:id="@+id/DateText"
         android:layout_width="203dp"
