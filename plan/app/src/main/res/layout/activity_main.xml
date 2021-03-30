@@ -8,20 +8,6 @@
 
     //желательно добавить рисунок лупы слева
 
-    <EditText
-        android:id="@+id/InputText"
-        android:layout_width="271dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="1dp"
-        android:hint="Введите план"
-        android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,11 +38,20 @@
             android:layout_width="408dp"
             android:layout_height="540dp"
             android:layout_gravity="center" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <EditText
+            android:id="@+id/InputText"
+            android:layout_width="271dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="24dp"
+            android:hint="Введите план"
+            android:inputType="text" />
+
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
