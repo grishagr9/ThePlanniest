@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.theplanniest.R;
+
 public class Description extends AppCompatActivity {
 
     @Override
