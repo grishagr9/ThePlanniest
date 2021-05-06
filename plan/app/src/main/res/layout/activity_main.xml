@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.main.MainActivity">
+    tools:context=".screens.main.MainActivity"
+    >
 
     //желательно добавить рисунок лупы слева
 
@@ -13,6 +14,7 @@
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".screens.main.MainActivity"
+<<<<<<< HEAD
         tools:layout_editor_absoluteX="22dp"><![CDATA[>
 
 
@@ -61,5 +63,40 @@
                 app:srcCompat="@android:drawable/ic_dialog_email" />
         </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+=======
+        tools:layout_editor_absoluteX="22dp"
+        tools:layout_editor_absoluteY="-320dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <include
+        layout="@layout/content_main"
+        android:layout_width="408dp"
+        android:layout_height="540dp"
+        android:layout_gravity="center" />
+
+    <EditText
+        android:id="@+id/InputText"
+        android:layout_width="271dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:hint="Введите план"
+        android:inputType="text" />
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+>>>>>>> f755ead27a3e4230e47677147abdd91c4891fbef
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
