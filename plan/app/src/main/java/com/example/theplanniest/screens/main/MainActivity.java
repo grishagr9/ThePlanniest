@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //вертк скрол список
 
         recyclerView = findViewById(R.id.list);
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 
