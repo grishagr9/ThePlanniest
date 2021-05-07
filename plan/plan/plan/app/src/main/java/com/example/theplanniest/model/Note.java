@@ -22,8 +22,8 @@ public class Note implements Parcelable {
     //сделано ли дело?
     @ColumnInfo(name = "done")
     public boolean done;
-    @ColumnInfo(name = "mainText")
-    public String mainText;
+    //@ColumnInfo(name = "mainText")
+    //public String mainText;
 
     public Note(){
 
@@ -38,7 +38,7 @@ public class Note implements Parcelable {
         if (uid != note.uid) return false;
         if (timestamp != note.timestamp) return false;
         if (done != note.done) return false;
-        if (!mainText.equals(note.mainText)) return false;
+        //if (!mainText.equals(note.mainText)) return false;
         return text != null ? text.equals(note.text) : note.text == null;
     }
 
@@ -46,7 +46,7 @@ public class Note implements Parcelable {
     public int hashCode() {
         int result = uid;
         result = 31 * result + (text != null ? text.hashCode() : 0);
-        result = 31 * result + (mainText != null ? mainText.hashCode() : 0);
+        //result = 31 * result + (mainText != null ? mainText.hashCode() : 0);
         result = 31 * result + (int) (timestamp ^ (timestamp >>> 32));
         result = 31 * result + (done ? 1 : 0);
         return result;
@@ -56,7 +56,7 @@ public class Note implements Parcelable {
         text = in.readString();
         timestamp = in.readLong();
         done = in.readByte() != 0;
-        mainText = in.readString();
+        //mainText = in.readString();
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Note implements Parcelable {
         dest.writeInt(uid);
         dest.writeString(text);
         dest.writeLong(timestamp);
-        dest.writeString(mainText);
+        //dest.writeString(mainText);
         dest.writeByte((byte) (done ? 1 : 0));
     }
 

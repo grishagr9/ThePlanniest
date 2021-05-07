@@ -65,7 +65,7 @@ public class MainActivity2 extends AppCompatActivity {
         if (getIntent().hasExtra(EXTRA_NOTE)) {
             note = getIntent().getParcelableExtra(EXTRA_NOTE);
             editText.setText(note.text);
-            MainText.setText(note.mainText);
+            //MainText.setText(note.mainText);
         } else {
             note = new Note();
         }
@@ -93,7 +93,7 @@ public class MainActivity2 extends AppCompatActivity {
                     note.text = editText.getText().toString();
                     note.done = false;
                     note.timestamp = System.currentTimeMillis();
-                    note.mainText = MainText.getText().toString();
+                    //note.mainText = MainText.getText().toString();
                     //если старая
                     if (getIntent().hasExtra(EXTRA_NOTE)) {
                         App.getInstance().getNoteDao().update(note);
