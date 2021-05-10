@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,13 +32,14 @@ public class MainActivity2 extends AppCompatActivity {
     private LinearLayout linearLayout;
     Calendar dateAndTime=Calendar.getInstance();
     public TextView DateTime ;
-
+    public RatingBar Rating;
     private  static final String EXTRA_NOTE = "MainActivity2.EXTRA_NOTE";
+    float aboba;
 //заметка, которую мы создаем
   private  Note note;
 
   private EditText editText;
-  private EditText MainText;
+  //private EditText MainText;
     //вызов активити, cохранение плана
     public static void start(Activity caller,Note note){
        Intent intent = new Intent(caller, MainActivity2.class);
@@ -57,11 +59,13 @@ public class MainActivity2 extends AppCompatActivity {
 
         setContentView(R.layout.create_plan);
 
+        Rating = (RatingBar) findViewById(R.id.ratingBar);
+        aboba = Rating.getRating();
 
 
 
         editText = findViewById(R.id.NamePlan);
-        MainText = findViewById(R.id.about_plan);
+        //MainText = findViewById(R.id.about_plan);
         if (getIntent().hasExtra(EXTRA_NOTE)) {
             note = getIntent().getParcelableExtra(EXTRA_NOTE);
             editText.setText(note.text);

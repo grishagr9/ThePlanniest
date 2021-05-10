@@ -8,7 +8,7 @@
 
 
 //Название плана
-  // /* <EditText
+  //  <EditText
         android:id="@+id/NamePlan"
         android:layout_width="180dp"
         android:layout_height="66dp"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
 
-        tools:layout_editor_absoluteY="35dp" />*/
+        tools:layout_editor_absoluteY="35dp" />
 //Описание плана
     <EditText
         android:id="@+id/about_plan"
@@ -121,7 +121,7 @@
         android:layout_marginBottom="12dp"
         android:gravity="center"
         android:onClick="DateClick"
-        android:text="Выбрать дату"
+        android:text="Дата"
         android:textColor="#000000"
 
         android:textSize="22sp"
