@@ -2,8 +2,12 @@ package com.example.theplanniest;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.Menu;
@@ -20,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.theplanniest.model.Note;
+import com.example.theplanniest.screens.main.Description;
 import com.example.theplanniest.screens.main.MainActivity;
 
 import java.util.Calendar;
@@ -35,6 +40,8 @@ public class MainActivity2 extends AppCompatActivity {
     public RatingBar Rating;
     private  static final String EXTRA_NOTE = "MainActivity2.EXTRA_NOTE";
     float aboba;
+    private NotificationManager nm;
+    private final int NOTIFICATION_ID = 127;
 //заметка, которую мы создаем
   private  Note note;
 
@@ -61,6 +68,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         Rating = (RatingBar) findViewById(R.id.ratingBar);
         aboba = Rating.getRating();
+        nm = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
 
 
@@ -149,6 +157,25 @@ public class MainActivity2 extends AppCompatActivity {
         //onCreateDialog(); вывод предупреждения о несохранённых данных
         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    //функция вызова оповещения
+    public void  showNotification(View view)
+    {
+        Notification.Builder builder = new Notification.Builder((getApplicationContext()));
+        Intent intent = new Intent(getApplicationContext(), Description.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        builder
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setLargeIcon(BitmapFactory.decodeResource(getApplication().getResources(), R.drawable.ic_launcher_foreground))
+                .setTicker("Дедлайны близки!")
+                .setWhen((System.currentTimeMillis()))
+                .setAutoCancel(true)
+                .setContentTitle("The Planniest")
+                .setContentText("Настало время приступить к планам!");
+        Notification notification = builder.build();
+        nm.notify(NOTIFICATION_ID, notification);
     }
     //функция, которая будет создавать кнопку плана на главном экране
     /*public void Click_Create(View view)
