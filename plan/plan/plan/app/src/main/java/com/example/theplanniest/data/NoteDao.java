@@ -35,5 +35,4 @@ public interface NoteDao {
 //операция для удаления
     @Delete
     void delete(Note note);
-
 }

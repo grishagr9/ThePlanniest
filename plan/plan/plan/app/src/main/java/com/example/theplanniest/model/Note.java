@@ -59,6 +59,15 @@ public class Note implements Parcelable {
         //mainText = in.readString();
     }
 
+    public static Note MyCopy(Note note){
+        Note note_new = new Note();
+        note_new.done = note.done;
+        note_new.text = note.text;
+        note_new.timestamp = note.timestamp;
+        note_new.uid = note.uid;
+        return note_new;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(uid);

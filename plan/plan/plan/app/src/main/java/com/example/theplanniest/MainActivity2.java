@@ -20,10 +20,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.theplanniest.model.Note;
+import com.example.theplanniest.model.NoteArray;
 import com.example.theplanniest.screens.main.MainActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
     private Context MainActivityClass;
@@ -35,6 +39,7 @@ public class MainActivity2 extends AppCompatActivity {
     public RatingBar Rating;
     private  static final String EXTRA_NOTE = "MainActivity2.EXTRA_NOTE";
     float aboba;
+
 //заметка, которую мы создаем
   private  Note note;
 
@@ -62,8 +67,6 @@ public class MainActivity2 extends AppCompatActivity {
         Rating = (RatingBar) findViewById(R.id.ratingBar);
         aboba = Rating.getRating();
 
-
-
         editText = findViewById(R.id.NamePlan);
         //MainText = findViewById(R.id.about_plan);
         if (getIntent().hasExtra(EXTRA_NOTE)) {
@@ -73,9 +76,6 @@ public class MainActivity2 extends AppCompatActivity {
         } else {
             note = new Note();
         }
-
-
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,8 +96,10 @@ public class MainActivity2 extends AppCompatActivity {
                     //сохраняем заметку
                     note.text = editText.getText().toString();
                     note.done = false;
-                    note.timestamp = System.currentTimeMillis();
-                    //note.mainText = MainText.getText().toString();
+                    int a = (int)(1000*Rating.getRating());
+                    long DefDays = CountDays(DataParse(DateTime.getText().toString()));
+                    note.timestamp = a*(5000-DefDays);
+                    System.out.println(a*(5000-DefDays));
                     //если старая
                     if (getIntent().hasExtra(EXTRA_NOTE)) {
                         App.getInstance().getNoteDao().update(note);
@@ -149,6 +151,77 @@ public class MainActivity2 extends AppCompatActivity {
         //onCreateDialog(); вывод предупреждения о несохранённых данных
         Intent intent = new Intent(MainActivity2.this, MainActivity.class);
         startActivity(intent);
+    }
+    public static Calendar DataParse(String str){
+            int year = 0;
+            int mes = 0;
+            int day = 0;
+            String[] ss = str.split(" ");
+            try{
+                switch (ss[0]) {
+                    case "January":
+                        mes = 0;
+                        break;
+                    case "February":
+                        mes = 1;
+                        break;
+                    case "March ":
+                        mes = 2;
+                        break;
+                    case "April":
+                        mes = 3;
+                        break;
+                    case "May":
+                        mes = 4;
+                        break;
+                    case "June":
+                        mes = 5;
+                        break;
+                    case "July":
+                        mes = 6;
+                        break;
+                    case "August":
+                        mes = 7;
+                        break;
+                    case "September":
+                        mes = 8;
+                        break;
+                    case "October":
+                        mes = 9;
+                        break;
+                    case "November":
+                        mes = 10;
+                        break;
+                    case "December":
+                        mes = 11;
+                        break;
+                    default:
+                        break;
+                }
+                day = Integer.parseInt(ss[1].substring(0,ss[1].length()-1));
+                year = Integer.parseInt(ss[2]);
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+            return new GregorianCalendar(year,mes,day);
+    }
+    public static long CountDays(Calendar calendar){
+        Calendar calendar1 = Calendar.getInstance();
+        int d1 = calendar.get(Calendar.DATE);
+        int d2 = calendar1.get(Calendar.DATE);
+        int m1 = calendar.get(Calendar.MONTH);
+        int m2 = calendar1.get(Calendar.MONTH);
+        int y1 = calendar.get(Calendar.YEAR);
+        int y2 = calendar1.get(Calendar.YEAR);
+        if(y2==y1){
+            if(m2==m1){
+                return d1-d2;
+            }
+            else
+                return ((m1-m2)*31+d1)-d2;
+        }
+        else
+            return ((y1-y2)*365+d1-d2);
     }
     //функция, которая будет создавать кнопку плана на главном экране
     /*public void Click_Create(View view)
