@@ -1,10 +1,12 @@
 package com.example.theplanniest;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -28,6 +30,8 @@ import com.example.theplanniest.model.NoteArray;
 import com.example.theplanniest.screens.main.Description;
 import com.example.theplanniest.screens.main.MainActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,11 +50,17 @@ public class MainActivity2 extends AppCompatActivity {
     float aboba;
     private NotificationManager nm;
     private final int NOTIFICATION_ID = 127;
+    private AlarmManager am;
+    private Date stamp;
 //заметка, которую мы создаем
   private  Note note;
 
   private EditText editText;
-  //private EditText MainText;
+
+    public MainActivity2() throws ParseException {
+    }
+
+    //private EditText MainText;
     //вызов активити, cохранение плана
     public static void start(Activity caller,Note note){
        Intent intent = new Intent(caller, MainActivity2.class);
@@ -72,7 +82,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         Rating = (RatingBar) findViewById(R.id.ratingBar);
         aboba = Rating.getRating();
-        nm = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        //nm = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         editText = findViewById(R.id.NamePlan);
         //MainText = findViewById(R.id.about_plan);
@@ -246,6 +256,42 @@ public class MainActivity2 extends AppCompatActivity {
                 .setContentText("Настало время приступить к планам!");
         Notification notification = builder.build();
         nm.notify(NOTIFICATION_ID, notification);
+    }
+    public class TimeNotification extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            Notification.Builder builder = new Notification.Builder((getApplicationContext()));
+            Intent intentTL = new Intent(getApplicationContext(), Description.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intentTL, PendingIntent.FLAG_CANCEL_CURRENT);
+            builder
+                    .setContentIntent(pendingIntent)
+                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setLargeIcon(BitmapFactory.decodeResource(getApplication().getResources(), R.drawable.ic_launcher_foreground))
+                    .setTicker("Дедлайны близки!")
+                    .setWhen((System.currentTimeMillis()))
+                    .setAutoCancel(true)
+                    .setContentTitle("The Planniest")
+                    .setContentText("Настало время приступить к планам!");
+            Notification notification = builder.build();
+            nm.notify(1, notification);
+// Установим следующее напоминание.
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            /*PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
+                    intent, PendingIntent.FLAG_CANCEL_CURRENT);*/
+            am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
+    }
+    private void restartNotify() {
+        am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, TimeNotification.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,
+                intent, PendingIntent.FLAG_CANCEL_CURRENT );
+// На случай, если мы ранее запускали активити, а потом поменяли время,
+// откажемся от уведомления
+        am.cancel(pendingIntent);
+// Устанавливаем разовое напоминание
+        am.set(AlarmManager.RTC_WAKEUP, stamp.getTime(), pendingIntent);
     }
     //функция, которая будет создавать кнопку плана на главном экране
     /*public void Click_Create(View view)

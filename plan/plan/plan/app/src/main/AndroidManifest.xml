@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.theplanniest">
 
     <application
@@ -20,6 +21,8 @@
 
         </activity>
         <activity android:name=".MainActivity2"></activity>
+        <receiver android:name=".MainActivity2$TimeNotification"
+            tools:ignore="Instantiatable" />
     </application>
 
 </manifest>
